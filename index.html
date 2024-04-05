@@ -1,74 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RenewSun - Product Catalogue</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #FFFFFF;
-      color: #000000;
-    }
-    .product {
-      margin-bottom: 20px;
-      padding: 10px;
-      border: 2px solid #59A52C;
-      border-radius: 5px;
-    }
-    .product h2 {
-      color: #59A52C;
-    }
-    .product p {
-      color: #000000;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renew Sun - Solar Energy Solutions</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    padding: 10px 100px;
+    margin: 0;
+  }
+
+  .navbar,
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .nav-links a {
+    color: #707070;
+    text-decoration: none;
+    padding: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .nav-links a:hover {
+    color: #000000;
+    transform: scale(1.1);
+  }
+
+  .nav-links .icon {
+    font-size: 24px;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  .quote {
+    background-color: rgba(0, 195, 0, 0.8);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-top: 50px;
+  }
+
+  .hero-text {
+    max-width: 600px;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .hero-text button,
+  .learn-more {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .hero-text button:hover,
+  .learn-more:hover {
+    background-color: #45a049;
+  }
+
+  .info-image {
+    max-width: 500px;
+  }
+
+  .about-text {
+    max-width: 600px;
+  }
+
+  .about-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    
+  }
+
+  .about-text button,
+  .learn-more {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .about-text button:hover,
+  .learn-more:hover {
+    background-color: #45a049;
+  }
+
+  .about-image {
+    max-width: 500px;
+  }
+
+  :root {
+    --bg-width: 0%;
+  }
+
+  .anim-bg {
+    position: relative;
+  }
+
+  .anim-bg::before {
+    content: "";
+    position: absolute;
+    width: var(--bg-width);
+    height: 100%;
+    border-radius: 10px;
+    left: -5px;
+    padding: 5px 5px 0 5px;
+    background: rgb(207, 238, 130);
+    z-index: -1;
+    transition: width 1s ease-in-out;
+  }
+
+  .heading {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: fit-content;
+  }
+
+  .info {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    margin-top: -20px;
+    text-align: justify;
+  }
+
+  .intro {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    background-color: #f5f5f5;
+    border-radius: 25px;
+    width: 1325px;
+    text-align: center;
+  }
+
+.intro h2 {
+  font-size: 28px;
+  border-bottom: 2px #ccc solid;
+  border-radius: 2px;
+  margin: 40px 0;  
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.intro h2::after {
+  transform: scaleX(1);
+}
+
+.intro h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background-color: #f0f0f0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.intro p{
+  text-align: center;
+  font-size: 16px;
+  color: #5A5A5A;
+  padding: 10px 0;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.intro .chevrons {
+  position: absolute;
+  top: 84rem;
+  right: 45px;
+  margin: 10px;
+  font-size: 24px;
+  margin-top: 7.5em;
+  color: #000;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+}
+
+.product-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.product-items h4{
+  font-weight: bold;
+  text-align: center;
+  padding: 20px; 
+  cursor: pointer;
+}
+
+.product-items h4:hover{
+  color: #777;
+}
+
+.product-container {
+  text-align: center;
+}
+
+.product-container button {
+  display: inline-block;
+  padding: 5px 20px;
+  margin-bottom: 30px;
+  position: relative;
+  font-size: 14px;
+  background-color: transparent;
+  color: #000;
+  text-decoration: none;
+  border-radius: 15px;
+  border-style: solid;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.product-container i{
+  width: 10px;
+  height: 100px;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.product-container img {
+  width: 100%;
+  max-width: 300px;
+  height: 350px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 10px 0 0;
+}
+
+.category a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.category a:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+
+.footer-container{
+  box-shadow: 2px 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 50px;
+  margin: 40px auto 0;
+  padding: 30px;
+  background-color: #D3D3D3;
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+}
+
+
+.footer-left,
+.footer-center,
+.footer-right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-left{
+  width: 40%;
+}
+
+.footer-container h3{
+  color:  #ffffff;
+  font-size: 36px;
+  margin: 0;
+}
+
+.footer-container h3 span{
+  color:  #62788637;
+}
+
+.footer-links{
+  color:  #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  font-weight:400;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-links a:hover{
+  color:  #333;
+}
+
+.footer-company-name{
+  color:  #fff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-center{
+  width: 35%;
+}
+
+.footer-center i{
+  background-color:  #33383b;
+  color: #ffffff;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-center div:nth-child(3) a:hover {
+  text-decoration: underline;
+}
+
+.footer-center p{
+  display: inline-block;
+  color: #ffffff;
+  font-weight:400;
+  vertical-align: middle;
+  margin:0;
+}
+
+.footer-center p span{
+  display:block;
+  font-weight: normal;
+  font-size:14px;
+  line-height:2;
+}
+
+.footer-center p a{
+  text-decoration: none;
+  color:  #fff;
+}
+
+.footer-links a:after {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.footer-right{
+  width: 20%;
+}
+
+.footer-company-about{
+  line-height: 20px;
+  color:  #fff;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-company-about span{
+  display: block;
+  color:  #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-icons{
+  margin-top: 20px;
+}
+
+.footer-icons a{
+  display: inline-block;
+  width: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color:  #33383b;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+}
+
+.footer-icons a:hover{
+  background-color:  #333b;
+}
+</style>
 </head>
 <body>
-  <h1>RenewSun - Product Catalogue</h1>
-  <div class="product">
-    <h2>LED Lighting</h2>
-    <p>Energy-efficient LED bulbs for residential, commercial, and industrial applications.</p>
+  <div class="navbar">
+    <img src="logo.png" alt="Renew Sun Logo" class="logo">
+    <div class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Shop</a>
+      <a href="#">Contact</a>
+      <a href="#" class="icon"><i class='bx bx-search'></i></a>
+      <a href="#" class="icon"><button class="quote">Get a Quote</button></a>
+    </div>
   </div>
-  <div class="product">
-    <h2>Smart Thermostats</h2>
-    <p>Advanced thermostats with smart features for efficient temperature control.</p>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h5 class="heading">Welcome</h5>
+      <h1>Empowering <span class="anim-bg">Energy Efficiency</span> in South Africa</h1>
+      <p class="info">
+        At Renew Sun, our commitment is to leverage solar energy to promote sustainability and resilience in South Africa's buildings, cities, and infrastructure, aiming to maximize nature's resource potential for sustainable development and climate change mitigation.
+      </p>
+      <a href="#" class="learn-more">Learn More <i class='bx bx-link-external'></i></a>
+    </div>
+    <img src="hero.jpg" alt="Solar Panels" class="info-image">
+  </section>
+
+  <section class="hero">
+    <img src="https://fieconsult.com/wp-content/uploads/2022/05/Solar-energy-scaled.jpg" alt="About Image" class="info-image" style="max-width: 700px; height: 450px;">
+    <div class="hero-text">
+      <h5 class="heading">About Us</h5>
+      <h1>What Our Mission Is</h1>
+      <p class="info">
+        Our mission is to harness the power of the sun to drive sustainability and resilience in buildings, cities, and infrastructure across South Africa. We provide solar solutions that maximize the potential of nature's precious resource to power sustainable development and address the challenges of climate change.
+      </p>
+      <a href="#" class="learn-more">Learn More <i class='bx bx-link-external'></i></a>
+    </div>
+  </section>
+
+  <div class="category">
+    <h2>Our Recommended</h2>
+    <a href="#">Show all</a>
   </div>
-  <div class="product">
-    <h2>Solar Panels</h2>
-    <p>High-quality photovoltaic solar panels for renewable energy generation.</p>
+
+  <section class="intro">
+    <h2>Start Thriving with Renew Sun</h2>
+    <p>Experience Excellence with Renew Sun: Our commitment to sustainability and resilience.</p>
+    <div class="product-items">
+      <div class="product-container">
+        <img src="https://theinverterstore.com/wp-content/uploads/2020/01/Rack-Front-view.jpg" alt="">
+        <h4>330W Solar Ground Mount Racks</h4>
+        <p>BWP 1 249.95</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="product-container">
+        <img src="https://bristolautoelectric-15a42.kxcdn.com/imagecache/e92dc204-e4dc-4d0c-bb22-ae0000c74db5/BASP150-BASP150-Semi-Flexible-Solar-Panel-150W-1180-x-668-x-3mm_600x600.jpg" alt="">
+        <h4>150W Semi Flexible Solar Panel</h4>
+        <p>BWP 1 399.95</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="product-container">
+        <img src="https://m.economictimes.com/thumb/msid-69130611,width-1200,height-900,resizemode-4,imgsize-472342/polycrystalline-solar-panels-cheap-yet-efficient-long-lasting-solar-panels.jpg" alt="">
+        <h4>270W Polycrystalline Solar Panel</h4>
+        <p>BWP 2 499.95</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+    </div>
+  </section>
+
+  <div class="category">
+    <h2>Our Products</h2>
+    <a href="#">Show all</a>
   </div>
-  <div class="product">
-    <h2>Energy Management Systems (EMS)</h2>
-    <p>Integrated systems for monitoring and optimizing energy usage in buildings.</p>
-  </div>
-  <div class="product">
-    <h2>Insulation</h2>
-    <p>Effective insulation materials to improve energy efficiency and comfort.</p>
-  </div>
-  <div class="product">
-    <h2>Heat Pumps</h2>
-    <p>Efficient heat pump systems for heating and cooling residential and commercial spaces.</p>
-  </div>
-  <div class="product">
-    <h2>Building Automation Systems (BAS)</h2>
-    <p>Automated systems to control and manage various building functions for energy efficiency.</p>
-  </div>
-  <div class="product">
-    <h2>Energy Storage Batteries</h2>
-    <p>Battery storage solutions for storing excess energy generated by solar panels.</p>
-  </div>
-  <div class="product">
-    <h2>Mounting Racks</h2>
-    <p>Durable mounting racks for securely installing solar panels on rooftops or ground mounts.</p>
-  </div>
-  <div class="product">
-    <h2>Cables</h2>
-    <p>High-quality cables for electrical connections in solar panel systems and energy management.</p>
-  </div>
-  <div class="product">
-    <h2>Solar Panel Cleaning Chemicals</h2>
-    <p>Specialized cleaning solutions to maintain the performance and longevity of solar panels.</p>
-  </div>
+
+  <section class="intro">
+    <h2>Explore Innovative Thermostats</h2>
+    <p>Upgrade your home with advanced thermostat solutions from Renew Sun.</p>
+    <div class="product-items">
+      <div class="product-container">
+        <img src="https://i.ebayimg.com/images/g/wBUAAOSwz4tj45lz/s-l960.jpg" alt="Thermostat 1">
+        <h4>EcoBee Smart Home Thermostat</h4>
+        <p>BWP 1 199.99</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="product-container">
+        <img src="https://i.ebayimg.com/images/g/-vcAAOSwsallUhk7/s-l500.jpg" alt="Thermostat 2">
+        <h4>Wireless Programmable Thermostat</h4>
+        <p>BWP 1 299.99</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="product-container">
+        <img src="https://i.ebayimg.com/images/g/H7EAAOSw7mhei4J-/s-l1600.jpg" alt="Thermostat 3">
+        <h4>Portable Thermostat Stand</h4>
+        <p>BWP 999.99</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+    </div>
+  </section>
+  
+  <section class="intro">
+    <h2>Explore Our LED Lighting Solutions</h2>
+    <p>Discover energy-efficient LED lighting solutions designed to brighten your spaces while saving energy.</p>
+    <div class="product-items">
+      <div class="product-container">
+        <img src="https://eshome.ph/cdn/shop/files/LED-Bulb-18W-E27-Bulb-Holder-Ecoshift-Shopify-858.jpg?v=1684139575&width=823" alt="LED Lighting 1">
+        <h4>Energy-Saving LED Bulbs</h4>
+        <p>BWP 599.95</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="product-container">
+        <img src="https://m.media-amazon.com/images/I/41dW89u4gjL.jpg" alt="LED Lighting 2">
+        <h4>White LED Strip Light (Plastic), 5 meters</h4>
+        <p>BWP 2 099.95</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+      <div class="product-container">
+        <img src="https://cdn03.plentymarkets.com/ngfa4hoznlgi/item/images/4002/full/LED-Einbauleuchte-PANEL-R-6-22W-A---10.jpg" alt="LED Lighting 3">
+        <h4>LED Panel Lights</h4>
+        <p>BWP 199.95</p>
+        <button>Add to Cart</button>
+        <i class="far fa-heart"></i>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-container">
+    <div class="footer-left">
+      <h3>Renew Sun &reg;</h3>
+      <p class="footer-links">
+        <a href="about.html">About</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="help.html">Help Center</a>
+      </p>
+      <p class="footer-company-name">&copy; 2024 Renew Sun Inc. All rights reserved.</p>
+    </div>
+  
+    <div class="footer-center">
+      <div>
+        <i class="fa-solid fa-location-dot"></i>
+        <p><span>123 Solar Boulevard</span> South Africa</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-phone"></i>
+        <p>+27 11 234 5678</p>
+      </div>
+      <div>
+        <i class="fa-solid fa-envelope"></i>
+        <p><a href="mailto:info@renewsun.com">info@renewsun.com</a></p>
+      </div>
+    </div>
+  
+    <div class="footer-right">
+      <p class="footer-company-about">
+        <span>About the company</span>
+        Empowering sustainability through solar energy solutions, driving environmental impact and energy efficiency.
+      </p>
+      <div class="footer-icons">
+        <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>  
+  <script>
+    const animBg = document.querySelector(".anim-bg");
+    const width = animBg.offsetWidth;
+    animBg.style.setProperty("--bg-width", `${width}px`);
+  </script>
 </body>
 </html>
